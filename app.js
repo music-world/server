@@ -12,6 +12,7 @@ const cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var lastfmRouter = require('./routes/lastfm');
+const songRouter = require('./routes/song');
 
 var app = express();
 
@@ -33,6 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/lastfm', lastfmRouter);
+app.use('/song', songRouter);
 app.use('/lyrics', LyricRoute);
 app.use('/lastfm', lastfmRouter)
 
