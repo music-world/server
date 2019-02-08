@@ -7,7 +7,7 @@ var logger = require('morgan');
 var LyricRoute = require('./routes/lyrics')
 const mongoose = require('mongoose')
 const cors = require('cors')
-
+const { verifyUser } = require('./middlewares')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -34,10 +34,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.use(verifyUser)
 app.use('/lastfm', lastfmRouter);
 app.use('/song', songRouter);
 app.use('/lyrics', LyricRoute);
-app.use('/lastfm', lastfmRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
