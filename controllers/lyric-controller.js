@@ -14,8 +14,8 @@ class LyricController{
             })
             .then(({data}) => {
                 let lyric = data.message.body.lyrics.lyrics_body
-                console.log(lyric)
-                res.status(200).json(lyric)
+                let lyricReplace = lyric.split('\n').join('<br>')
+                res.status(200).json(lyricReplace)
             })
             .catch(err => {
                 console.log(err)

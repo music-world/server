@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.use(verifyUser)
+// app.use(verifyUser)
 app.use('/lastfm', lastfmRouter);
 app.use('/song', songRouter);
 app.use('/lyrics', LyricRoute);
