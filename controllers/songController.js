@@ -4,14 +4,16 @@ require('dotenv').config();
 class SongController {
 
   static search(req,res){
+    console.log('==============', req.query.search)
     axios
-      .get(`https://deezerdevs-deezer.p.mashape.com/search?q=${req.params.search}`,
+      .get(`https://deezerdevs-deezer.p.mashape.com/search?q=${req.query.search}`,
       {
         headers: {
           "X-Mashape-Key": process.env.X_Mashape_Key
         }
       })
       .then(({data}) => {
+        console.log('datanya', data)
         res.status(200).json(data);
       })
       .catch(err => {
